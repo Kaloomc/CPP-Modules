@@ -6,13 +6,11 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 22:39:51 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/07 22:48:31 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/28 11:57:59 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-using namespace	std;
 
 void	to_upper(char *str)
 {
@@ -33,13 +31,13 @@ int	main(int ac, char **av)
 
 	i = 1;
 	if (ac == 1)
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 	while (av[i])
 	{
 		to_upper(av[i]);
-		cout << av[i];
+		std::cout << av[i];
 		i++;
 	}
-	cout << "\n";
+	std::cout << "\n";
 	return (0);
 }
