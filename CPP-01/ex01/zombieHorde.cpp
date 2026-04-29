@@ -6,13 +6,13 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 21:19:05 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:30:45 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/29 22:07:46 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie *zombieHorde(int N, std:: string name)
+Zombie *zombieHorde(int N, std::string name)
 {
 	if (N <= 0) return NULL; 
 

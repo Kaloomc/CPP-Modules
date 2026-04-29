@@ -6,14 +6,15 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 20:54:28 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:29:04 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/29 22:03:40 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Zombie_H
-#define Zombie_H
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 
 #include <iostream>
+#include <string>
 
 class Zombie
 {

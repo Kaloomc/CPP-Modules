@@ -6,11 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 00:34:23 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/12 00:47:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/29 21:58:26 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 int main(void)
 {

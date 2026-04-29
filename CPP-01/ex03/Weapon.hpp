@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 00:57:36 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:11:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/29 22:15:55 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define Weapon_H
 
 #include <iostream>
+#include <string>
 
 class Weapon
 {
