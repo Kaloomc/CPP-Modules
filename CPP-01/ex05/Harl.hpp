@@ -6,9 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 17:00:20 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/02/19 10:52:35 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:08:58 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef Harl_H
+#define Harl_H
 
 #include <iostream>
 
@@ -22,3 +25,5 @@ private:
 public:
 	void complain(std::string level);
 };
+
+#endif

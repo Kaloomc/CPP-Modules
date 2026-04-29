@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/02/12 00:23:47 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/04/29 15:43:48 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# 2. Linkage final
+ 
 $(NAME): $(OBJ)
 	@echo "Compilation de $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)

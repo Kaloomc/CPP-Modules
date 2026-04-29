@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/02/12 01:40:52 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/04/29 17:09:34 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-SRC = main.cpp HumanA.cpp HumanB.cpp
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
       
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# 2. Linkage final
+ 
 $(NAME): $(OBJ)
 	@echo "Compilation de $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
