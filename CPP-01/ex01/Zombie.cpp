@@ -6,12 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 20:57:54 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:28:29 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:11:24 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-#include <ostream>
+#include <iostream>
 
 Zombie::~Zombie(void)
 {
@@ -28,7 +28,7 @@ void Zombie::set_name(std::string str)
 	name = str;
 }
 
-void Zombie::announce(void)
+void Zombie::announce(void) const
 {
 	std::cout << this->name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
 }

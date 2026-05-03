@@ -6,14 +6,15 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 01:01:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 16:07:38 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:06:34 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HumanA_H
-#define HumanA_H
+#ifndef HUMANA_H
+#define HUMANA_H
 
-#include "Weapon.hpp" 
+#include "Weapon.hpp"
+#include <string>
 
 class HumanA
 {

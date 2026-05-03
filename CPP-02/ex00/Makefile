@@ -6,18 +6,18 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/05/03 12:00:00 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/04/29 23:17:38 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Moar_brainz
+NAME = Fixed
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-SRC = Zombie.cpp zombieHorde.cpp main.cpp
+SRC = Fixed.cpp main.cpp
       
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 

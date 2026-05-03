@@ -6,14 +6,16 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 01:01:11 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:09:56 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:06:11 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HumanB_H
-#define HumanB_H
+#ifndef HUMANB_H
+#define HUMANB_H
 
-#include "Weapon.hpp" 
+#include "Weapon.hpp"
+#include <string>
+
 
 class HumanB
 {

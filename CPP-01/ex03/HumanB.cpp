@@ -6,11 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 01:06:44 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:29:26 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:06:15 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
+#include <iostream>
 
 HumanB::HumanB(std::string name_) : weapon(NULL) ,name(name_) {}
 

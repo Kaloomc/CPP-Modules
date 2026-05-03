@@ -6,14 +6,13 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 17:00:20 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 22:03:49 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:08:07 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HARL_H
 #define HARL_H
 
-#include <iostream>
 #include <string>
 
 class Harl

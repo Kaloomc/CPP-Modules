@@ -6,11 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 10:55:03 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 17:19:47 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/03 12:11:56 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+#include <iostream>
 
 void Harl::debug(void)
 {
