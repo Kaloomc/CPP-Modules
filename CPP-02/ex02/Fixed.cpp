@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 22:59:52 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/18 13:55:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/18 19:48:04 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,22 @@ bool Fixed::operator!=(const Fixed &other) const
 
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
-	return (a > b) ? a : b;
+	return (a < b) ? a : b;
 }
 
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
 {
-	return (a > b) ? a : b;
+	return (a < b) ? a : b;
 }
 
 Fixed& Fixed::max(Fixed& a, Fixed& b)
 {
-	return (a < b) ? a : b;
+	return (a > b) ? a : b;
 }
 
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
-	return (a < b) ? a : b;
+	return (a > b) ? a : b;
 }
 
 Fixed& Fixed::operator++()
