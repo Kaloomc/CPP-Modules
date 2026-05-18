@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 20:57:54 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/03 12:11:32 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/18 11:43:50 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void Zombie::set_name(std::string str)
 
 void Zombie::announce(void) const
 {
-	std::cout << this->name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
