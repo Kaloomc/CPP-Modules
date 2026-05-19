@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 22:59:52 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/19 17:32:18 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:38:49 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,12 @@ Fixed Fixed::operator--(int)
 }
 
 
-float Fixed:: toFloat(void) const
+float Fixed::toFloat(void) const
 {
-	return static_cast<float>this->fixedPoint / (1 << number);
+	return static_cast<float>(this->fixedPoint) / (1 << number);
 }
 
-int Fixed:: toInt(void) const
+int Fixed::toInt(void) const
 {
 	return this->fixedPoint >> number;
 }
@@ -162,9 +162,6 @@ void Fixed::setRawBits(int const raw)
 
 std::ostream & operator<<(std::ostream & out, const Fixed & rhs)
 {
-    // On utilise la fonction de conversion
     out << rhs.toFloat();
-    
-    // On retourne le flux pour permettre d'enchaîner (ex: cout << a << b;)
     return out;
 }

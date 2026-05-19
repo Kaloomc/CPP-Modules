@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:59:13 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/19 17:29:10 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:45:05 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Point::Point(const Fixed fixed_x, const Fixed fixed_y) : x(fixed_x), y(fixed_y)
 {
 }
 
-Point::Point(const Point& src) : x(src.x),y(src.y)
+Point::Point(const Point& src) : x(src.x), y(src.y)
 {
 }
 
