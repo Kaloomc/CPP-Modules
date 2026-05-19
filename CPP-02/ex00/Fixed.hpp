@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 22:46:26 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/04/29 23:11:59 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:17:44 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define FIXED_H
 
 #include <iostream>
-#include <string>
 
 class Fixed
 {

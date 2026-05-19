@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 22:59:52 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/18 19:48:04 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/19 17:32:18 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,12 +148,12 @@ Fixed Fixed::operator--(int)
 
 float Fixed:: toFloat(void) const
 {
-	return (float)this->fixedPoint / (1 << number);
+	return static_cast<float>this->fixedPoint / (1 << number);
 }
 
 int Fixed:: toInt(void) const
 {
-	return this->fixedPoint >> 8;
+	return this->fixedPoint >> number;
 }
 
 int Fixed::getRawBits(void) const 
