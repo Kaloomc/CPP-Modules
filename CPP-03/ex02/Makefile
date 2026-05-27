@@ -6,7 +6,7 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/27 10:28:49 by fgarnier          #+#    #+#              #
-#    Updated: 2026/05/27 11:01:05 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/05/27 11:16:37 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
+SRC = ClapTrap.cpp FragTrap.cpp main.cpp
       
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
