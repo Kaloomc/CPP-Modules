@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 18:14:14 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/19 19:37:56 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/27 10:57:00 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ int main(void)
 	pablo.beRepaired(2);
 	pablo.takeDamage(10);
 	pablo.attack("terry");
+
+	return 0;
 }

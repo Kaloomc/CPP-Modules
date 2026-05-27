@@ -5,19 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/26 16:32:12 by fgarnier          #+#    #+#              #
-#    Updated: 2026/05/27 11:00:32 by fgarnier         ###   ########.fr        #
+#    Created: 2026/05/27 10:28:49 by fgarnier          #+#    #+#              #
+#    Updated: 2026/05/27 11:01:05 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap
+NAME = FragTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
-SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
+SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
       
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
@@ -27,7 +27,6 @@ $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
- 
 $(NAME): $(OBJ)
 	@echo "Compilation de $(NAME)..."
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)

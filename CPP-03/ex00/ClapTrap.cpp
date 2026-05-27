@@ -6,45 +6,48 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 18:08:20 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/19 19:39:07 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/27 10:55:56 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-bool ClapTrap::status(int hitPoint, int energyPoints, std::string name)
+bool ClapTrap::status(void) const
 {
-	if(hitPoint <= 0)
+	if (this->hitPoints <= 0)
 	{
-		std::cout << "ClapTrap " << name << " is Dead!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " is Dead!" << std::endl;
 		return false;
 	}
-	if(energyPoints <= 0)
+	if (this->energyPoints <= 0)
 	{
-		std::cout << "ClapTrap " << name << "has no energy left!" << std::endl;
+		std::cout << "ClapTrap " << this->name << " has no energy left!" << std::endl;
 		return false;
 	}
 	return true;
 }
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0)
 {
+	std::cout << "A ClapTrap named " << this->name << " Spawned" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name_) : name(name_), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-	std::cout << "A ClapTrap named " << name << " Spawned" << std::endl;
+	std::cout << "A ClapTrap named " << this->name << " Spawned" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "A ClapTrap named " << this->name << " has been Destroy" << std::endl;
+	std::cout << "A ClapTrap named " << this->name << " has been Destroyed" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src)
 {
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = src;
 }
+
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
 	if (this != &other)
@@ -59,7 +62,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (!this->status(this->hitPoints, this->energyPoints, this->name))
+	if (!this->status())
 		return;
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
 	this->energyPoints--;
@@ -68,13 +71,19 @@ void ClapTrap::attack(const std::string& target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << this->name << " took " << amount << " points of damage!" << std::endl;
-	hitPoints -= amount;
+	if (this->hitPoints <= 0)
+		return;
+	if (amount >= static_cast<unsigned int>(this->hitPoints))
+		this->hitPoints = 0;
+	else
+		this->hitPoints -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (!this->status(this->hitPoints, this->energyPoints, this->name))
+	if (!this->status())
 		return;
 	std::cout << "ClapTrap " << this->name << " repaired itself by " << amount << " points!" << std::endl;
-	hitPoints += amount;
+	this->hitPoints += amount;
+	this->energyPoints--; 
 }
