@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 10:27:47 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/27 10:54:30 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:08:34 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ FragTrap::FragTrap() : ClapTrap("Default_Frag")
 	this->hitPoints = 100;
 	this->energyPoints = 100;
 	this->attackDamage = 30;
-	std::cout << "FragTrap générique a été créé." << std::endl;
+	std::cout << "A generic FragTrap was created." << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) 
@@ -25,7 +25,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->hitPoints = 100;
 	this->energyPoints = 100;
 	this->attackDamage = 30;
-	std::cout << "FragTrap " << this->name << " est prêt à en découdre !" << std::endl;
+	std::cout << "FragTrap " << this->name << " is ready to fight !" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& src) : ClapTrap(src)
@@ -45,12 +45,12 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << this->name << " s'est auto-détruit." << std::endl;
+	std::cout << "FragTrap " << this->name << " self-destructed." << std::endl;
 }
 
 void FragTrap::highFivesGuys(void)
 {
 	if (!this->status())
 		return;
-	std::cout << "FragTrap " << this->name << " lève la main et demande un High Five !" << std::endl;
+	std::cout << "FragTrap " << this->name << " Raise his hand and ask for a High Five!" << std::endl;
 }
