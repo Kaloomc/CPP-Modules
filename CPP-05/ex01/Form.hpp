@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:29:57 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/28 16:38:58 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:52:49 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ public:
 	class GradeTooHighException : public std::exception {
     public:
         virtual const char* what() const throw() {
-            return "Grade is too high! Maximum allowed is 1.";
+            return "Grade is too high!";
         }
     };
 
     class GradeTooLowException : public std::exception {
     public:
         virtual const char* what() const throw() {
-            return "Grade is too low! Minimum allowed is 150.";
+            return "Grade is too low!";
         }
     };
 };

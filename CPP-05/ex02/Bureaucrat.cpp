@@ -6,12 +6,12 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:28:17 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/28 18:06:55 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:26:41 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("") , _grade(150) {}
 
@@ -49,12 +49,21 @@ void Bureaucrat::decrementGrade() {
 std::string Bureaucrat::getName() const { return _name; }
 int Bureaucrat::getGrade() const { return _grade; }
 
-void Bureaucrat::signForm(Form& f) {
+void Bureaucrat::signForm(AForm& f) {
     try {
         f.beSigned(*this);
         std::cout << _name << " signed " << f.getName() << std::endl;
     } catch (std::exception& e) {
         std::cout << _name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm& f) {
+    try {
+        f.execute(*this);
+        std::cout << _name << " executed " << f.getName() << std::endl;
+    } catch (std::exception& e) {
+        std::cout << _name << " couldn't execute " << f.getName() << " because " << e.what() << std::endl;
     }
 }
 

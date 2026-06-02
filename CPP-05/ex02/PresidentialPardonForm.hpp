@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 18:07:48 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/30 09:42:09 by fgarnier         ###   ########.fr       */
+/*   Created: 2026/06/02 14:53:27 by fgarnier          #+#    #+#             */
+/*   Updated: 2026/06/02 15:46:24 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
-class ShrubberyCreationForm : public AForm {
-public:
-    ShrubberyCreationForm(const std::string& target);
-	ShrubberyCreationForm(const ShrubberyCreationForm& src);
-	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& rhs);
-    virtual ~ShrubberyCreationForm();
-
-    virtual void execute(Bureaucrat const & executor) const;
+class PresidentialPardonForm : public AForm
+{
 private:
 	std::string _target;
+public:
+	PresidentialPardonForm(const std::string& target);
+	PresidentialPardonForm(const PresidentialPardonForm& src);
+	PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
+	virtual ~PresidentialPardonForm();
+
+	virtual void execute(Bureaucrat const & executor) const;
 };
+
+
 
 #endif

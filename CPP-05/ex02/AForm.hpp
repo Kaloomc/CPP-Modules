@@ -31,30 +31,37 @@ public:
 	AForm(std::string name_,int requireGradeToSign_,int requireGradeToExecute);
 	AForm(const AForm& src);
 	AForm& operator=(const AForm& rhs);
-	~AForm();
+	virtual ~AForm();
 
-	std::string getName() const;
-	bool getSigned() const;
-	int getRequireGradeToSign() const;
-	int getRequireGradeToExecute() const;
+	virtual std::string getName() const;
+	virtual bool getSigned() const;
+	virtual int getRequireGradeToSign() const;
+	virtual int getRequireGradeToExecute() const;
 
-	void beSigned(const Bureaucrat& b);
+	virtual void beSigned(const Bureaucrat& b);
 
 	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException : public std::exception {
     public:
         virtual const char* what() const throw() {
-            return "Grade is too high! Maximum allowed is 1.";
+            return "Grade is too high!";
         }
     };
 
     class GradeTooLowException : public std::exception {
     public:
         virtual const char* what() const throw() {
-            return "Grade is too low! Minimum allowed is 150.";
+            return "Grade is too low!";
         }
     };
+
+	class FormNotSignedException : public std::exception {
+	public :
+		virtual const char* what() const throw() {
+			return "Form not signed.";
+		}
+	};
 };
 
 std::ostream& operator<<(std::ostream& o, const AForm& i);
