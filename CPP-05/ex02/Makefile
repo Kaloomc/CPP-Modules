@@ -6,11 +6,11 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/27 10:28:49 by fgarnier          #+#    #+#              #
-#    Updated: 2026/06/02 15:45:47 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/06/02 17:21:32 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Bureaucrat
+NAME = AForm
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
