@@ -6,14 +6,14 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:29:18 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 16:27:25 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:43:18 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <stdlib.h>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Request",72,137)
 {

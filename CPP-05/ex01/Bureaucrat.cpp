@@ -6,14 +6,14 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:28:17 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/28 16:42:23 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:46:30 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Bureaucrat::Bureaucrat() : _name("") , _grade(150){}
+Bureaucrat::Bureaucrat() : _name("Default") , _grade(150){}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name) {
     if (grade < 1)

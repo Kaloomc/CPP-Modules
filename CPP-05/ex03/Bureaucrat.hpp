@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:25:24 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/30 10:10:22 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:40:30 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
     void        decrementGrade();
 
     void        signForm(AForm& f);
-	void		executeForm(AForm& f);
+	void 		executeForm (AForm const & form) const;
 
     class GradeTooHighException : public std::exception {
     public:

@@ -6,14 +6,14 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:28:17 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 16:26:41 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:46:31 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-Bureaucrat::Bureaucrat() : _name("") , _grade(150) {}
+Bureaucrat::Bureaucrat() : _name("Default") , _grade(150) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name) {
     if (grade < 1)
@@ -58,12 +58,12 @@ void Bureaucrat::signForm(AForm& f) {
     }
 }
 
-void Bureaucrat::executeForm(AForm& f) {
+void Bureaucrat::executeForm (AForm const & form) const {
     try {
-        f.execute(*this);
-        std::cout << _name << " executed " << f.getName() << std::endl;
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << std::endl;
     } catch (std::exception& e) {
-        std::cout << _name << " couldn't execute " << f.getName() << " because " << e.what() << std::endl;
+        std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 
