@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 10:13:29 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 14:26:41 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:42:31 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class RobotomyRequestForm : public AForm {
 public:
+	RobotomyRequestForm();
 	RobotomyRequestForm(const std::string& target);
 	RobotomyRequestForm(const RobotomyRequestForm& src);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);

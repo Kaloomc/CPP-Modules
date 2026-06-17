@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:29:18 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/08 17:43:18 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:46:18 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 #include "Bureaucrat.hpp"
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Request",72,137)
-{
-	_target = target;
-}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request", 72, 45) , _target("default") {}
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy Request", 72, 45) , _target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) : AForm(src), _target(src._target) {}
 

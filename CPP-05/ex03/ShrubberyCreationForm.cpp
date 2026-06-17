@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 18:10:03 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/08 17:44:07 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 22:00:25 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <fstream>
+
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation",145,137) , _target("default") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery Creation",145,137) , _target(target) {}
 
@@ -31,6 +33,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
+const char* ShrubberyCreationForm::FileOpenException::what() const throw() {
+    return "Error: Unable to open the target file.";
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->getSigned()) 
@@ -42,11 +48,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     {
         throw AForm::GradeTooLowException();
     }
-	std::ofstream File((this->_target + "_shrubbery").c_str());
+	std::ofstream outfile((this->_target + "_shrubbery").c_str());
 
-	if (File.is_open())
+	if (outfile.is_open())
 	{
-		File << "          ccee88oo\n"
+		outfile << "          ccee88oo\n"
 			<< "      C8O8O8Q8PoOb o8oo\n"
 			<< "     dOB69QO8PdUOpugoO9bD\n"
 			<< "    CgggbU8OU qOp qOdoUOdcb\n"
@@ -58,10 +64,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 			<< "             |||||\n"
 			<< "       .....//|||\\\\....\n";
 		
-		File.close();
+		outfile.close();
 	}
 	else
 	{
-		std::cerr << "Erreur : Impossible de créer le fichier." << std::endl;
+		throw ShrubberyCreationForm::FileOpenException();
 	}
 }

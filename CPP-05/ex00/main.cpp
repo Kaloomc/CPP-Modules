@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:19:05 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/28 16:25:51 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:39:01 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ int main() {
     catch (std::exception& e) {
         std::cerr << "Exception capturée : " << e.what() << std::endl;
     }
+
+    std::cout << "\n--- Test Forme Canonique ---" << std::endl;
+    Bureaucrat original("Alice", 42);
+    Bureaucrat copy(original); // Test constructeur de copie
+    Bureaucrat assigned("Bob", 100);
+    assigned = original;       // Test opérateur d'affectation
+    
+    std::cout << "Original : " << original << std::endl;
+    std::cout << "Copy     : " << copy << std::endl;
+    std::cout << "Assigned : " << assigned << std::endl;
 
     return 0;
 }

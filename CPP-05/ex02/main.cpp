@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:19:05 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 14:24:23 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:39:01 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
+    srand(time(NULL));
+
     std::cout << "===== INITIALISATION DES BUREAUCRATES =====" << std::endl;
     Bureaucrat boss("Hermes", 1);       // Peut tout faire
     Bureaucrat assistant("Bob", 40);     // Grade moyen

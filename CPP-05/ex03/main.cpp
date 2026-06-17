@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:15:37 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/08 17:42:28 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:48:30 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "AForm.hpp"
 #include "Intern.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {

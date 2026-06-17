@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 16:48:13 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 17:18:51 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:39:01 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ Intern::~Intern() {}
 
 AForm* Intern::makeForm(const std::string& formName, const std::string& target)
 {
-    std::string names[] = {
+    static const std::string names[] = {
         "shrubbery creation",
         "robotomy request",
         "presidential pardon"
     };
 
-    FormCreator creators[] = {
+    static FormCreator creators[] = {
         &Intern::createShrubbery,
         &Intern::createRobotomy,
         &Intern::createPresidential

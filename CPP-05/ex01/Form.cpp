@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:39:32 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/05/28 16:59:45 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:58:20 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Form& Form::operator=(const Form& rhs) {
 
 Form::~Form() {}
 
-std::string Form::getName() const { return name; }
+const std::string& Form::getName() const { return name; }
 
 bool Form::getSigned() const { return signed_; }
 
@@ -54,4 +54,12 @@ std::ostream& operator<<(std::ostream& o, const Form& i) {
 	  << ", requires grade " << i.getRequireGradeToSign() << " to sign, and grade " 
 	  << i.getRequireGradeToExecute() << " to execute.";
 	return o;
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+    return "Grade is too high!";
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+    return "Grade is too low!";
 }

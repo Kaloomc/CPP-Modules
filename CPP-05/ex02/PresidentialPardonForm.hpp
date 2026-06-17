@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 14:53:27 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 15:46:24 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:39:01 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class PresidentialPardonForm : public AForm
 private:
 	std::string _target;
 public:
+	PresidentialPardonForm();
 	PresidentialPardonForm(const std::string& target);
 	PresidentialPardonForm(const PresidentialPardonForm& src);
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);

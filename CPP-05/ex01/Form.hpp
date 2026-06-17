@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:29:57 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/02 15:52:49 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:58:03 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 	Form& operator=(const Form& rhs);
 	~Form();
 
-	std::string getName() const;
+	const std::string& getName() const;
 	bool getSigned() const;
 	int getRequireGradeToSign() const;
 	int getRequireGradeToExecute() const;
@@ -42,16 +42,12 @@ public:
 
 	class GradeTooHighException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too high!";
-        }
+        virtual const char* what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too low!";
-        }
+        virtual const char* what() const throw();
     };
 };
 

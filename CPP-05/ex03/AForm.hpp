@@ -33,7 +33,7 @@ public:
 	AForm& operator=(const AForm& rhs);
 	virtual ~AForm();
 
-	virtual std::string getName() const;
+	virtual const std::string& getName() const;
 	virtual bool getSigned() const;
 	virtual int getRequireGradeToSign() const;
 	virtual int getRequireGradeToExecute() const;
@@ -44,24 +44,18 @@ public:
 
 	class GradeTooHighException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too high!";
-        }
+        virtual const char* what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too low!";
-        }
+        virtual const char* what() const throw();
     };
 
-	class FormNotSignedException : public std::exception {
-	public :
-		virtual const char* what() const throw() {
-			return "Form not signed.";
-		}
-	};
+    class FormNotSignedException : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
 };
 
 std::ostream& operator<<(std::ostream& o, const AForm& i);

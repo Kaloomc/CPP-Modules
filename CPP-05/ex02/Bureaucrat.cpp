@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:28:17 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/08 17:46:31 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:57:04 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void Bureaucrat::decrementGrade() {
     _grade++;
 }
 
-std::string Bureaucrat::getName() const { return _name; }
+const std::string& Bureaucrat::getName() const { return _name; }
 int Bureaucrat::getGrade() const { return _grade; }
 
 void Bureaucrat::signForm(AForm& f) {
@@ -70,4 +70,12 @@ void Bureaucrat::executeForm (AForm const & form) const {
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& i) {
     o << i.getName() << ", bureaucrat grade " << i.getGrade() << ".";
     return o;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade is too high! Maximum allowed is 1.";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade is too low! Minimum allowed is 150.";
 }

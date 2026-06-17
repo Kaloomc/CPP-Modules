@@ -6,7 +6,7 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 15:25:24 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/08 17:38:49 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:57:37 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
     Bureaucrat& operator=(const Bureaucrat& rhs);
     ~Bureaucrat();
 
-    std::string getName() const;
+    const std::string& getName() const;
     int         getGrade() const;
 
     void        incrementGrade();
@@ -43,16 +43,12 @@ public:
 
     class GradeTooHighException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too high! Maximum allowed is 1.";
-        }
+        virtual const char* what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
     public:
-        virtual const char* what() const throw() {
-            return "Grade is too low! Minimum allowed is 150.";
-        }
+        virtual const char* what() const throw();
     };
 };
 

@@ -35,7 +35,7 @@ AForm& AForm::operator=(const AForm& rhs) {
 
 AForm::~AForm() {}
 
-std::string AForm::getName() const { return name; }
+const std::string& AForm::getName() const { return name; }
 
 bool AForm::getSigned() const { return signed_; }
 
@@ -54,4 +54,16 @@ std::ostream& operator<<(std::ostream& o, const AForm& i) {
 	  << ", requires grade " << i.getRequireGradeToSign() << " to sign, and grade " 
 	  << i.getRequireGradeToExecute() << " to execute.";
 	return o;
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "Grade is too high!";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "Grade is too low!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+    return "Form not signed.";
 }
