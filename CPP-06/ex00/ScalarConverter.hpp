@@ -6,12 +6,19 @@
 /*   By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:19:39 by fgarnier          #+#    #+#             */
-/*   Updated: 2026/06/18 00:33:00 by fgarnier         ###   ########.fr       */
+/*   Updated: 2026/06/18 14:39:32 by fgarnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
+
 #include <string>
+#include <iostream>
+#include <limits>
+#include <cstdlib>
+#include <cmath>
+#include <iomanip>
 
 class ScalarConverter
 {
@@ -24,4 +31,4 @@ public:
 	static void convert(const std::string& str);
 };
 
-
+#endif

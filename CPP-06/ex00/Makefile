@@ -6,11 +6,11 @@
 #    By: fgarnier <fgarnier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/27 10:28:49 by fgarnier          #+#    #+#              #
-#    Updated: 2026/06/18 00:22:12 by fgarnier         ###   ########.fr        #
+#    Updated: 2026/06/18 14:15:06 by fgarnier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Intern
+NAME = ScalarConverter
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
