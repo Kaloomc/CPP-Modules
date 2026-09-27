@@ -3,6 +3,11 @@
 
 #include <stack>
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <cstdlib>
+#include <stdexcept>
+#include <cctype>
 
 class RPN {
 	public:

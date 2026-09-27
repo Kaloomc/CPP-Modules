@@ -15,7 +15,7 @@ class BitcoinExchange {
 		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
-		void loadDatabase(const std::string &path);
+		bool loadDatabase(const std::string &path);
 		void processInput(const std::string &path) const;
 
 	private:

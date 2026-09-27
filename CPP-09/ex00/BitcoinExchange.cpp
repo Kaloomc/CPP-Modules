@@ -13,15 +13,13 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void BitcoinExchange::loadDatabase(const std::string &path)
+bool BitcoinExchange::loadDatabase(const std::string &path)
 {
-	// TODO: read data.csv ("date,exchange_rate") into _db
-	
 	std::ifstream file(path.c_str());
 	if (!file.is_open())
 	{
 		std::cerr << "Error: could not open file." << std::endl;
-		return;
+		return false;
 	}
 	std::string line;
 	std::getline(file, line); // skip header "date,exchange_rate"
@@ -36,6 +34,7 @@ void BitcoinExchange::loadDatabase(const std::string &path)
 		_db[date] = rate;
 	}
 	file.close();
+	return true;
 }
 
 bool BitcoinExchange::isValidDate(const std::string &date) const

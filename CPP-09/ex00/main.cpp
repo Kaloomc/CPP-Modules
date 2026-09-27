@@ -9,7 +9,8 @@ int main(int ac, char **av)
 		return 1;
 	}
 	BitcoinExchange btc;
-	btc.loadDatabase("data.csv");
+	if (!btc.loadDatabase("data.csv"))
+		return 1;
 	btc.processInput(av[1]);
 	return 0;
 }

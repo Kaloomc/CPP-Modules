@@ -1,15 +1,18 @@
 NAME = RPN
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 OBJ_DIR = obj
 
 SRC = main.cpp RPN.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+DEP = $(OBJ:.o=.d)
 
 all: $(NAME)
+
+-include $(DEP)
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
