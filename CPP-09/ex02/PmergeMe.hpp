@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <deque>
+#include <algorithm>
+#include <utility>
 
 class PmergeMe {
 	public:
@@ -13,6 +15,10 @@ class PmergeMe {
 
 		void sortVector(std::vector<int> &data);
 		void sortDeque(std::deque<int> &data);
+
+	private:
+		template <typename C>
+		void fordJohnson(C &data);
 };
 
 #endif
