@@ -3,8 +3,7 @@
 
 #include <vector>
 #include <deque>
-#include <algorithm>
-#include <utility>
+#include <cstddef>
 
 class PmergeMe {
 	public:
@@ -13,12 +12,17 @@ class PmergeMe {
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe();
 
-		void sortVector(std::vector<int> &data);
-		void sortDeque(std::deque<int> &data);
+		static void sortVector(std::vector<int> &data);
+		static void sortDeque(std::deque<int> &data);
 
 	private:
-		template <typename C>
-		void fordJohnson(C &data);
+		static void sortIndexesVector(const std::vector<int> &vals, std::vector<size_t> &idx);
+		static size_t searchVector(const std::vector<int> &vals, const std::vector<size_t> &chain,
+			int value, size_t hi);
+
+		static void sortIndexesDeque(const std::deque<int> &vals, std::deque<size_t> &idx);
+		static size_t searchDeque(const std::deque<int> &vals, const std::deque<size_t> &chain,
+			int value, size_t hi);
 };
 
 #endif

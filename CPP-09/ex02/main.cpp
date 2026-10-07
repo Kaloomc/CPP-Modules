@@ -48,21 +48,18 @@ int main(int ac, char **av)
 		input.push_back(n);
 	}
 
-	PmergeMe sorter;
-
-	// le temps inclut le remplissage du container + le tri
 	std::clock_t start = std::clock();
 	std::vector<int> vec;
 	for (int i = 1; i < ac; i++)
 		vec.push_back(static_cast<int>(std::strtol(av[i], NULL, 10)));
-	sorter.sortVector(vec);
+	PmergeMe::sortVector(vec);
 	double vecTime = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 1000000;
 
 	start = std::clock();
 	std::deque<int> deq;
 	for (int i = 1; i < ac; i++)
 		deq.push_back(static_cast<int>(std::strtol(av[i], NULL, 10)));
-	sorter.sortDeque(deq);
+	PmergeMe::sortDeque(deq);
 	double deqTime = static_cast<double>(std::clock() - start) / CLOCKS_PER_SEC * 1000000;
 
 	print("Before:", input);

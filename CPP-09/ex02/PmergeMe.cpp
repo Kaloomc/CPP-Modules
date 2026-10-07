@@ -11,58 +11,70 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &)
 
 PmergeMe::~PmergeMe() {}
 
-template <typename C>
-void PmergeMe::fordJohnson(C &data)
+size_t PmergeMe::searchVector(const std::vector<int> &vals, const std::vector<size_t> &chain,
+	int value, size_t hi)
 {
-	// [0] cas de base
-	if (data.size() <= 1)
+	size_t lo = 0;
+	while (lo < hi) {
+		size_t mid = lo + (hi - lo) / 2;
+		if (vals[chain[mid]] < value)
+			lo = mid + 1;
+		else
+			hi = mid;
+	}
+	return lo;
+}
+
+void PmergeMe::sortIndexesVector(const std::vector<int> &vals, std::vector<size_t> &idx)
+{
+	if (idx.size() <= 1)
 		return;
 
-	// [1] paires (grand, petit) + straggler si taille impaire
-	std::vector<std::pair<int, int> > pairs;
-	bool hasStraggler = (data.size() % 2 != 0);
-	int straggler = hasStraggler ? data.back() : 0;
-	for (size_t i = 0; i + 1 < data.size(); i += 2) {
-		if (data[i] > data[i + 1])
-			pairs.push_back(std::make_pair(data[i], data[i + 1]));
-		else
-			pairs.push_back(std::make_pair(data[i + 1], data[i]));
-	}
-
-	// [2] trier les grands recursivement
-	C bigs;
-	for (size_t i = 0; i < pairs.size(); i++)
-		bigs.push_back(pairs[i].first);
-	fordJohnson(bigs);
-
-	// [3] pend[k] = petit associe a bigs[k]
-	C pend;
-	std::vector<bool> used(pairs.size(), false);
-	for (size_t k = 0; k < bigs.size(); k++) {
-		for (size_t j = 0; j < pairs.size(); j++) {
-			if (!used[j] && pairs[j].first == bigs[k]) {
-				used[j] = true;
-				pend.push_back(pairs[j].second);
-				break;
-			}
+	std::vector<size_t> bigs;
+	std::vector<size_t> smallOf(vals.size());
+	for (size_t i = 0; i + 1 < idx.size(); i += 2) {
+		size_t a = idx[i];
+		size_t b = idx[i + 1];
+		if (vals[a] < vals[b]) {
+			size_t tmp = a;
+			a = b;
+			b = tmp;
 		}
+		bigs.push_back(a);
+		smallOf[a] = b;
 	}
+	bool hasStraggler = (idx.size() % 2 != 0);
+	size_t straggler = idx.back();
 
-	// [4] main chain : pend[0] <= bigs[0], il va direct en tete
-	C mainChain = bigs;
-	mainChain.insert(mainChain.begin(), pend[0]);
+	sortIndexesVector(vals, bigs);
 
-	// [5] insertion dans l'ordre de Jacobsthal : 3, 5, 11, 21, 43...
+	std::vector<size_t> pend;
+	for (size_t k = 0; k < bigs.size(); k++)
+		pend.push_back(smallOf[bigs[k]]);
+	if (hasStraggler)
+		pend.push_back(straggler);
+
+	std::vector<size_t> chain;
+	chain.push_back(pend[0]);
+	chain.insert(chain.end(), bigs.begin(), bigs.end());
+
 	size_t prev = 1;
 	size_t jPrev = 1;
 	size_t jCur = 3;
 	while (prev < pend.size()) {
-		size_t end = std::min(jCur, pend.size());
+		size_t end = (jCur < pend.size()) ? jCur : pend.size();
+		std::vector<size_t> inserted;
 		for (size_t k = end; k > prev; k--) {
-			// [6] recherche binaire bornee par le grand associe
-			typename C::iterator bound = std::find(mainChain.begin(), mainChain.end(), bigs[k - 1]);
-			typename C::iterator pos = std::lower_bound(mainChain.begin(), bound, pend[k - 1]);
-			mainChain.insert(pos, pend[k - 1]);
+			size_t bound = chain.size();
+			if (k - 1 < bigs.size()) {
+				bound = prev + k - 1;
+				for (size_t i = 0; i < inserted.size(); i++)
+					if (inserted[i] <= bound)
+						bound++;
+			}
+			size_t p = searchVector(vals, chain, vals[pend[k - 1]], bound);
+			chain.insert(chain.begin() + p, pend[k - 1]);
+			inserted.push_back(p);
 		}
 		prev = end;
 		size_t next = jCur + 2 * jPrev;
@@ -70,20 +82,104 @@ void PmergeMe::fordJohnson(C &data)
 		jCur = next;
 	}
 
-	// [7] straggler sur toute la chaine
-	if (hasStraggler)
-		mainChain.insert(std::lower_bound(mainChain.begin(), mainChain.end(), straggler), straggler);
-
-	// [8] resultat
-	data = mainChain;
+	idx = chain;
 }
 
 void PmergeMe::sortVector(std::vector<int> &data)
 {
-	fordJohnson(data);
+	std::vector<size_t> idx;
+	for (size_t i = 0; i < data.size(); i++)
+		idx.push_back(i);
+	sortIndexesVector(data, idx);
+
+	std::vector<int> sorted;
+	for (size_t i = 0; i < idx.size(); i++)
+		sorted.push_back(data[idx[i]]);
+	data = sorted;
+}
+
+size_t PmergeMe::searchDeque(const std::deque<int> &vals, const std::deque<size_t> &chain,
+	int value, size_t hi)
+{
+	size_t lo = 0;
+	while (lo < hi) {
+		size_t mid = lo + (hi - lo) / 2;
+		if (vals[chain[mid]] < value)
+			lo = mid + 1;
+		else
+			hi = mid;
+	}
+	return lo;
+}
+
+void PmergeMe::sortIndexesDeque(const std::deque<int> &vals, std::deque<size_t> &idx)
+{
+	if (idx.size() <= 1)
+		return;
+
+	std::deque<size_t> bigs;
+	std::deque<size_t> smallOf(vals.size());
+	for (size_t i = 0; i + 1 < idx.size(); i += 2) {
+		size_t a = idx[i];
+		size_t b = idx[i + 1];
+		if (vals[a] < vals[b]) {
+			size_t tmp = a;
+			a = b;
+			b = tmp;
+		}
+		bigs.push_back(a);
+		smallOf[a] = b;
+	}
+	bool hasStraggler = (idx.size() % 2 != 0);
+	size_t straggler = idx.back();
+
+	sortIndexesDeque(vals, bigs);
+
+	std::deque<size_t> pend;
+	for (size_t k = 0; k < bigs.size(); k++)
+		pend.push_back(smallOf[bigs[k]]);
+	if (hasStraggler)
+		pend.push_back(straggler);
+
+	std::deque<size_t> chain(bigs);
+	chain.push_front(pend[0]);
+
+	size_t prev = 1;
+	size_t jPrev = 1;
+	size_t jCur = 3;
+	while (prev < pend.size()) {
+		size_t end = (jCur < pend.size()) ? jCur : pend.size();
+		std::deque<size_t> inserted;
+		for (size_t k = end; k > prev; k--) {
+			size_t bound = chain.size();
+			if (k - 1 < bigs.size()) {
+				bound = prev + k - 1;
+				for (size_t i = 0; i < inserted.size(); i++)
+					if (inserted[i] <= bound)
+						bound++;
+			}
+			size_t p = searchDeque(vals, chain, vals[pend[k - 1]], bound);
+			chain.insert(chain.begin() + p, pend[k - 1]);
+			inserted.push_back(p);
+		}
+		prev = end;
+		size_t next = jCur + 2 * jPrev;
+		jPrev = jCur;
+		jCur = next;
+	}
+
+	idx = chain;
 }
 
 void PmergeMe::sortDeque(std::deque<int> &data)
 {
-	fordJohnson(data);
+	std::deque<size_t> idx;
+	for (size_t i = 0; i < data.size(); i++)
+		idx.push_back(i);
+	sortIndexesDeque(data, idx);
+
+	std::deque<int> sorted;
+	for (size_t i = 0; i < idx.size(); i++)
+		sorted.push_back(data[idx[i]]);
+	data = sorted;
 }

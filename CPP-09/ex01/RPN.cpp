@@ -2,12 +2,10 @@
 
 RPN::RPN() {}
 
-RPN::RPN(const RPN &other) : _stack(other._stack) {}
+RPN::RPN(const RPN &) {}
 
-RPN &RPN::operator=(const RPN &other)
+RPN &RPN::operator=(const RPN &)
 {
-	if (this != &other)
-		_stack = other._stack;
 	return *this;
 }
 
@@ -17,6 +15,7 @@ int RPN::evaluate(const std::string &expr)
 {
 	// TODO: tokenize, push digits, apply operators, throw on error
 	
+	std::stack<int> stack;
 	std::istringstream stream(expr);
 
 	char c;
@@ -30,16 +29,16 @@ int RPN::evaluate(const std::string &expr)
 			{
 				if(std::isdigit(stream.peek()))
 					throw std::runtime_error("Error");
-				_stack.push(c - '0');
+				stack.push(c - '0');
 			}
 			else if(c == '+' || c == '-' || c == '*' || c == '/')
 			{
-				if(_stack.size() < 2)
+				if(stack.size() < 2)
 					throw std::runtime_error("Error");
-				int x = _stack.top();
-				_stack.pop();
-				int y = _stack.top();
-				_stack.pop();
+				int x = stack.top();
+				stack.pop();
+				int y = stack.top();
+				stack.pop();
 				int res;
 				if(c == '+')
 					res = y + x;
@@ -53,15 +52,15 @@ int RPN::evaluate(const std::string &expr)
 						throw std::runtime_error("Error");
 					res = y / x;
 				}
-				_stack.push(res);
+				stack.push(res);
 			}
 			else
 				throw std::runtime_error("Error");
 		}
 	}
-	if(_stack.size() != 1)
+	if(stack.size() != 1)
 		throw std::runtime_error("Error");
-	int result = _stack.top();
-	_stack.pop();
+	int result = stack.top();
+	stack.pop();
 	return result;
 }

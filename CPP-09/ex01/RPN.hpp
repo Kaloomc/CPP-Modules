@@ -17,9 +17,6 @@ class RPN {
 		~RPN();
 
 		int evaluate(const std::string &expr);
-
-	private:
-		std::stack<int> _stack;
 };
 
 #endif

@@ -1,18 +1,15 @@
 NAME = btc
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj
 
 SRC = main.cpp BitcoinExchange.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
-DEP = $(OBJ:.o=.d)
 
 all: $(NAME)
-
--include $(DEP)
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)

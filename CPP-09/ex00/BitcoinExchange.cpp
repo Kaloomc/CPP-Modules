@@ -30,8 +30,14 @@ bool BitcoinExchange::loadDatabase(const std::string &path)
 			continue;
 		std::string date = line.substr(0, pos);
 		std::string rateStr = line.substr(pos + 1);
-		float rate = std::atof(rateStr.c_str());
-		_db[date] = rate;
+		char *end;
+		double rate = std::strtod(rateStr.c_str(), &end);
+		if (rateStr.empty() || *end || rate < 0)
+		{
+			std::cerr << "Error: corrupted database." << std::endl;
+			return false;
+		}
+		_db[date] = static_cast<float>(rate);
 	}
 	file.close();
 	return true;
