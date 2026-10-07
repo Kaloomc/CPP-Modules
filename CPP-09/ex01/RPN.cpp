@@ -13,9 +13,7 @@ RPN::~RPN() {}
 
 int RPN::evaluate(const std::string &expr)
 {
-	// TODO: tokenize, push digits, apply operators, throw on error
-	
-	std::stack<int> stack;
+	std::stack<int, std::list<int> > stack;
 	std::istringstream stream(expr);
 
 	char c;
@@ -35,11 +33,11 @@ int RPN::evaluate(const std::string &expr)
 			{
 				if(stack.size() < 2)
 					throw std::runtime_error("Error");
-				int x = stack.top();
+				long x = stack.top();
 				stack.pop();
-				int y = stack.top();
+				long y = stack.top();
 				stack.pop();
-				int res;
+				long res;
 				if(c == '+')
 					res = y + x;
 				else if(c == '-')
@@ -52,7 +50,9 @@ int RPN::evaluate(const std::string &expr)
 						throw std::runtime_error("Error");
 					res = y / x;
 				}
-				stack.push(res);
+				if (res > INT_MAX || res < INT_MIN)
+					throw std::runtime_error("Error");
+				stack.push(static_cast<int>(res));
 			}
 			else
 				throw std::runtime_error("Error");

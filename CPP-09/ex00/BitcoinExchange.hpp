@@ -22,6 +22,7 @@ class BitcoinExchange {
 		std::map<std::string, float> _db;
 
 		bool isValidDate(const std::string &date) const;
+		bool isValidNumber(const std::string &str) const;
 };
 
 #endif

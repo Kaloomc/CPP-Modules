@@ -2,6 +2,8 @@
 #define RPN_HPP
 
 #include <stack>
+#include <list>
+#include <climits>
 #include <string>
 #include <iostream>
 #include <sstream>

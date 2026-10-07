@@ -22,7 +22,7 @@ bool BitcoinExchange::loadDatabase(const std::string &path)
 		return false;
 	}
 	std::string line;
-	std::getline(file, line); // skip header "date,exchange_rate"
+	std::getline(file, line);
 	while (std::getline(file, line))
 	{
 		size_t pos = line.find(',');
@@ -32,7 +32,7 @@ bool BitcoinExchange::loadDatabase(const std::string &path)
 		std::string rateStr = line.substr(pos + 1);
 		char *end;
 		double rate = std::strtod(rateStr.c_str(), &end);
-		if (rateStr.empty() || *end || rate < 0)
+		if (!isValidNumber(rateStr) || *end || rate < 0)
 		{
 			std::cerr << "Error: corrupted database." << std::endl;
 			return false;
@@ -68,6 +68,25 @@ bool BitcoinExchange::isValidDate(const std::string &date) const
 	return true;
 }
 
+bool BitcoinExchange::isValidNumber(const std::string &str) const
+{
+	size_t i = 0;
+	if (i < str.size() && (str[i] == '-' || str[i] == '+'))
+		i++;
+	bool digit = false;
+	bool dot = false;
+	for (; i < str.size(); i++)
+	{
+		if (std::isdigit(static_cast<unsigned char>(str[i])))
+			digit = true;
+		else if (str[i] == '.' && !dot)
+			dot = true;
+		else
+			return false;
+	}
+	return digit;
+}
+
 void BitcoinExchange::processInput(const std::string &path) const
 {
 	std::ifstream file(path.c_str());
@@ -77,7 +96,7 @@ void BitcoinExchange::processInput(const std::string &path) const
 		return;
 	}
 	std::string line;
-	std::getline(file, line); // skip header "date | value"
+	std::getline(file, line);
 	while (std::getline(file, line))
 	{
 		size_t pos = line.find('|');
@@ -89,7 +108,6 @@ void BitcoinExchange::processInput(const std::string &path) const
 		std::string date = line.substr(0, pos);
 		std::string valueStr = line.substr(pos + 1);
 
-		// trim surrounding spaces
 		date.erase(0, date.find_first_not_of(" \t"));
 		date.erase(date.find_last_not_of(" \t") + 1);
 		valueStr.erase(0, valueStr.find_first_not_of(" \t"));
@@ -103,7 +121,7 @@ void BitcoinExchange::processInput(const std::string &path) const
 
 		char *end;
 		float value = static_cast<float>(std::strtod(valueStr.c_str(), &end));
-		if (valueStr.empty() || *end != '\0')
+		if (!isValidNumber(valueStr) || *end != '\0')
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
